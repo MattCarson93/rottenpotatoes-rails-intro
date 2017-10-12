@@ -15,6 +15,11 @@ class MoviesController < ApplicationController
     if params[:sort_by]
       @movies.order!("#{params[:sort_by]}")
     end
+    if params[:sort_by] == "title"
+      @title_header = 'hilite'
+    elsif params[:sort_by] == "release_date"
+      @release_date_header = 'hilite'
+    end
   end
 
   def new
@@ -44,5 +49,4 @@ class MoviesController < ApplicationController
     flash[:notice] = "Movie '#{@movie.title}' deleted."
     redirect_to movies_path
   end
-
 end
